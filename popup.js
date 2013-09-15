@@ -42,7 +42,7 @@ var BidBuddy = {
         this.settings = localStorage;
 
         //==DEBUG
-        for(var key in this.settings){ console.log('settings['+key+'] = '+this.settings[key]); }
+        //for(var key in this.settings){ console.log('settings['+key+'] = '+this.settings[key]); }
         //==/DEBUG
     },
 
@@ -162,7 +162,13 @@ var BidBuddy = {
             return;
         }
 
-        var results   = json.findItemsByKeywordsResponse[0].searchResult[0].item;
+        var resultsCount = json.findItemsByKeywordsResponse[0].searchResult[0]['@count'],
+            results      = json.findItemsByKeywordsResponse[0].searchResult[0].item;
+        
+        if (resultsCount < 1) {
+            container.innerHTML = '<tr><th>No results found</th></tr>';
+            return;
+        }
 
         //==DEBUG
         //console.log(results);
@@ -268,7 +274,7 @@ var BidBuddy = {
                     actionProperty  = actionString.substring(actionString.lastIndexOf(':') + 1).toLowerCase();
 
                 //==DEBUG
-                console.log('(iteration) ' + actionAttribute + ', ' + actionString + ', ' + action + ', ' + actionProperty);
+                //console.log('(iteration) ' + actionAttribute + ', ' + actionString + ', ' + action + ', ' + actionProperty);
                 //==/DEBUG
 
                 if (action === 'save' && actionProperty.length > 0) {
@@ -278,7 +284,7 @@ var BidBuddy = {
 
                     element.addEventListener('click', function(e) {
                         //==DEBUG
-                        console.log('(click) ' + this.actionAttribute + ', ' + this.actionString + ', ' + this.action + ', ' + this.actionProperty);
+                        //('(click) ' + this.actionAttribute + ', ' + this.actionString + ', ' + this.action + ', ' + this.actionProperty);
                         //==/DEBUG
                         // Save the setting
                         localStorage[this.actionProperty] = document.getElementById(this.actionProperty)       ?
