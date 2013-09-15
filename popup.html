@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <title>BidBuddy</title>
+
+    <style>
+
+    body {
+        margin: 10px;
+        padding: 0;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 11px;
+        color: #333;
+        background: #EEE;
+        width: 503px;
+    }
+
+    #results .title a {
+        font-size: 14px;
+        text-decoration: none;
+        width: 150px;
+        display: block;
+    }
+
+    #results .title a:hover {
+        text-decoration: underline;
+    }
+
+    #results .price {
+        font-size: 14px;
+    }
+
+    #results .time {
+        font-weight: bold;
+        width: 100px;
+    }
+
+    #results .time span {
+        font-weight: normal;
+        width: 100px;
+    }
+
+    #results td + td {
+        padding-left: 10px;
+    }
+
+    #results .thumbnail img {
+        width: 150px;
+        height: auto;
+    }
+
+    #results .date {
+        display: block;
+    }
+
+    #results .price small {
+        color: #BBB;
+        font-size: 11px;
+        display: block;
+    }
+
+    input {
+        padding: 5px 0;
+        width: 380px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+    }
+
+    button {
+        border-radius: 5px;
+        border: 1px solid #263553;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#357ce7), to(#14376d));
+        padding: 6px 15px;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        color: white;
+        text-shadow: 0px -1px 0 rgba(0, 0, 0, 0.6);
+        cursor: pointer;
+        width: 70px;
+    }
+
+    .pageination {
+        text-align: center;
+        font-size: 20px;
+        color: #444;
+    }
+
+    .pageination a {
+        text-decoration: none;
+        color: #51789f;
+    }
+
+    </style>
+
+</head>
+<body>
+    
+    <div>
+        <label for="query">Search: </label>
+        <input type="text" id="query" />
+        <button data-action="lb:save:query">Save</button>
+    </div>
+
+    <div>
+        <label for="exclude">Exclude <small>(comma separated, no spaces)</small>: </label>
+        <input type="text" name="exclude" id="exclude" style="width: 244px;" />
+        <button data-action="lb:save:exclude">Save</button>
+    </div>
+
+    <table id="results">
+        <tr><th>Loading...</th></tr>
+    </table>
+
+    <div class="pageination">
+        <a href="#" data-action="lb:page:prev">&laquo;</a>
+        <span id="page">1</span>
+        <a href="#" data-action="lb:page:next">&raquo;</a>
+    </div>
+
+    <script src="popup.js"></script>
+
+</body>
+</html>

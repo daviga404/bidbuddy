@@ -1,0 +1,19 @@
+{
+
+  "manifest_version": 2,
+
+  "name": "BidBuddy",
+  "description": "Lists items ending soon on eBay, with settings to exclude keywords and to include.",
+  "version": "1.0",
+
+  "permissions": [
+    "https://svcs.ebay.com/",
+    "http://svcs.ebay.com/"
+  ],
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  }
+
+}
