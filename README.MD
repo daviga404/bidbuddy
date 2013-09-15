@@ -19,7 +19,7 @@ Are you tired of loading up eBay, typing in your query, selecting "Auction", and
 
 ## Installation<a id="installation"></a>
 
- 1. Download BidBuddy.crx from the [Releases page](releases).
+ 1. Download BidBuddy.crx from the [Releases page](https://github.com/daviga404/BidBuddy/releases).
  2. Open Google Chrome
  3. Go to Tools > Extensions, or enter `chrome://extensions` in the address bar.
  4. Drag BidBuddy.crx onto the page and install the extension!
