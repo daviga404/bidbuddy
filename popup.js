@@ -173,7 +173,7 @@ var BidBuddy = {
         for (var i = 0; i < results.length; i++) {
 
             //==DEBUG
-            console.log(results[i]);
+            //console.log(results[i]);
             //==/DEBUG
 
             var itemJSON = results[i],
