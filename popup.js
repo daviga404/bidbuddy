@@ -64,6 +64,8 @@ var BidBuddy = {
                          'security-appname=' + key + '&'                           + // The application key.
                          'response-data-format=JSON&'                              + // The data format to return results in.
                          'rest-payload&'                                           + // Use REST for request
+                         'itemFilter.name=ListingType&'                            + // The item filter name
+                         'itemFilter.value=Auction&'                               + // Filter by Auction only
                          'keywords=' + encodeURIComponent(query);                    // Search query
 
         return url;
@@ -150,17 +152,28 @@ var BidBuddy = {
         var response  = e.target.response,
             json      = JSON.parse(response),
             fragment  = document.createDocumentFragment(),
-            container = document.getElementById('results'),
-            results   = json.findItemsByKeywordsResponse[0].searchResult[0].item;
+            container = document.getElementById('results');
 
-        console.log(results);
+        if (json.findItemsByKeywordsResponse[0].hasOwnProperty('errorMessage') &&
+            json.findItemsByKeywordsResponse[0].errorMessage.length > 0) {
+            container.innerHTML = '<tr><th>Error</th></tr>' +
+                                  '<tr><td>Uh oh! An error occurred. Please put this error message in a bug report:</td></tr>' + 
+                                  '<tr><td>' + json.findItemsByKeywordsResponse[0].errorMessage[0].error[0].message[0] + '</td></tr>';
+            return;
+        }
+
+        var results   = json.findItemsByKeywordsResponse[0].searchResult[0].item;
+
+        //==DEBUG
+        //console.log(results);
+        //==/DEBUG
 
         container.innerHTML = ''; // We don't want any other items now, do we?
 
         for (var i = 0; i < results.length; i++) {
 
             //==DEBUG
-            //console.log(results[i]);
+            console.log(results[i]);
             //==/DEBUG
 
             var itemJSON = results[i],
